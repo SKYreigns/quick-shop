@@ -18,6 +18,7 @@ export interface CartStoreState {
   setAddress: (address: DeliveryAddress | null) => void;
   clearCart: () => void;
   resetSession: () => void;
+  switchStoreAndAdd: (product: Product, quantity?: number) => void;
 
   // Computed helpers
   getListedSubtotal: () => number;
@@ -137,6 +138,22 @@ export const useCartStore = create<CartStoreState>()(
           customRequests: [],
           address: null,
           storeId: null,
+        });
+      },
+
+      switchStoreAndAdd: (product, quantity = 1) => {
+        set({
+          storeId: product.storeId,
+          items: [
+            {
+              productId: product.id,
+              name: product.name,
+              unit: product.unit,
+              unitPrice: product.price,
+              quantity,
+            },
+          ],
+          customRequests: [],
         });
       },
 
