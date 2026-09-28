@@ -10,7 +10,7 @@ export const SAMPLE_STORES: Store[] = [
       "Everyday groceries, snacks, beverages, and household essentials.",
     imageUrl: "/images/stores/sharma-general.jpg",
     isOpen: true,
-    whatsappNumber: "919999999999",
+    whatsappNumber: "918700914124",
   },
   {
     id: "store_city_fresh",
@@ -20,7 +20,7 @@ export const SAMPLE_STORES: Store[] = [
     description: "Fresh everyday essentials and household products.",
     imageUrl: "/images/stores/city-fresh.jpg",
     isOpen: true,
-    whatsappNumber: "919888888888",
+    whatsappNumber: "918700914124",
   },
 ];
 
