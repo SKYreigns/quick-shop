@@ -261,11 +261,15 @@ export const ReviewSummary: React.FC = () => {
       setOrderSnapshot(snapshot);
 
       // 5. Initiate WhatsApp handoff
-      // Attempt window.open with fallback to window.location if popup blocked
-      const opened = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-      if (!opened || opened.closed || typeof opened.closed === "undefined") {
-        // Fallback for mobile / popup-blocker
-        window.location.href = whatsappUrl;
+      // Use window.open to open WhatsApp in a new tab/app without forced redirect
+      try {
+        const newTab = window.open(whatsappUrl, "_blank");
+        if (newTab) {
+          newTab.opener = null;
+        }
+      } catch (err) {
+        // If window.open is blocked or fails, the user can use the explicit fallback link on the post-handoff view
+        console.warn("Could not auto-open WhatsApp tab:", err);
       }
 
       // 6. Reset Quick Shop checkout/cart session
@@ -303,23 +307,41 @@ export const ReviewSummary: React.FC = () => {
       <div className="space-y-4">
         {/* Store Card */}
         {store && (
-          <Card className="p-4 sm:p-5 flex items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#EBF4F0] flex items-center justify-center text-[#1F6B4F]">
-                <StoreIcon className="w-5 h-5" />
+          <Card className="p-4 sm:p-5 space-y-3">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#EBF4F0] flex items-center justify-center text-[#1F6B4F]">
+                  <StoreIcon className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#6B6B6B] block">
+                    Store
+                  </span>
+                  <span className="text-sm font-bold text-[#171717]">
+                    {store.name}
+                  </span>
+                </div>
               </div>
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#6B6B6B] block">
-                  Store
-                </span>
-                <span className="text-sm font-bold text-[#171717]">
-                  {store.name}
-                </span>
-              </div>
+              <Badge variant="outline" className="text-xs">
+                {store.category}
+              </Badge>
             </div>
-            <Badge variant="outline" className="text-xs">
-              {store.category}
-            </Badge>
+
+            <div className="pt-2 border-t border-[#E5E2DA]/60 flex flex-wrap items-center justify-between gap-2 text-xs">
+              <div className="flex items-center gap-1.5 text-[#6B6B6B]">
+                <MessageCircle className="w-3.5 h-3.5 text-[#1F6B4F]" />
+                <span>WhatsApp Destination:</span>
+                <span className="font-mono font-semibold text-[#171717]">
+                  +{store.whatsappNumber}
+                </span>
+              </div>
+              {(store.whatsappNumber === "919999999999" ||
+                store.whatsappNumber === "919888888888") && (
+                <Badge variant="accent" className="text-[10px]">
+                  Demo Store Number
+                </Badge>
+              )}
+            </div>
           </Card>
         )}
 
@@ -440,15 +462,21 @@ export const ReviewSummary: React.FC = () => {
 
         {/* WhatsApp Handoff Information & Primary CTA */}
         <Card className="p-5 bg-white border border-[#E5E2DA] space-y-4 shadow-sm">
-          <div className="space-y-1 text-xs text-[#6B6B6B]">
-            <p className="font-bold text-[#171717] flex items-center gap-1.5">
+          <div className="space-y-1.5 text-xs text-[#6B6B6B]">
+            <p className="font-bold text-[#171717] flex items-center gap-1.5 text-sm">
               <MessageCircle className="w-4 h-4 text-[#1F6B4F]" />
               Ready to send your order through WhatsApp
             </p>
             <p className="leading-relaxed">
-              Clicking below will prepare your full order message and open
-              WhatsApp. You can check the order details one last time and press
-              Send to submit it to the merchant.
+              Quick Shop will prepare your structured order message and launch
+              WhatsApp. You must press{" "}
+              <strong className="text-[#171717]">Send</strong> inside WhatsApp
+              to submit your order to the store.
+            </p>
+            <p className="leading-relaxed text-[#8E8B82]">
+              The store receives your order only after the message is sent. Your
+              delivery address and contact phone will be included in the
+              message. No payment has been taken online.
             </p>
           </div>
 
