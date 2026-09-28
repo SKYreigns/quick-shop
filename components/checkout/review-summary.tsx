@@ -16,7 +16,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { useCartStore } from "@/store/cart-store";
-import { getStoreById } from "@/lib/data";
+import { getStoreById, isDemoWhatsAppNumber } from "@/lib/data";
 import {
   generateWhatsAppMessage,
   buildWhatsAppUrl,
@@ -335,8 +335,7 @@ export const ReviewSummary: React.FC = () => {
                   +{store.whatsappNumber}
                 </span>
               </div>
-              {(store.whatsappNumber === "919999999999" ||
-                store.whatsappNumber === "919888888888") && (
+              {isDemoWhatsAppNumber(store.whatsappNumber) && (
                 <Badge variant="accent" className="text-[10px]">
                   Demo Store Number
                 </Badge>

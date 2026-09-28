@@ -10,7 +10,10 @@ const inter = Inter({
   display: "swap",
 });
 
+const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(appUrl),
   title: "Quick Shop — Local Shopping, Made Simple",
   description:
     "Browse local neighborhood stores, add everyday essentials, and order directly through WhatsApp with no account required.",

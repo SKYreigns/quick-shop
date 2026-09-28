@@ -1,5 +1,21 @@
 import { Store, Product } from "./types";
 
+/**
+ * Known demo/placeholder WhatsApp destinations.
+ * Stores configured with these numbers are flagged in the checkout review UI.
+ */
+export const DEMO_WHATSAPP_NUMBERS = [
+  "918700914124",
+  "919999999999",
+  "919888888888",
+] as const;
+
+export function isDemoWhatsAppNumber(number: string): boolean {
+  return DEMO_WHATSAPP_NUMBERS.includes(
+    number as (typeof DEMO_WHATSAPP_NUMBERS)[number]
+  );
+}
+
 export const SAMPLE_STORES: Store[] = [
   {
     id: "store_sharma",
@@ -10,6 +26,7 @@ export const SAMPLE_STORES: Store[] = [
       "Everyday groceries, snacks, beverages, and household essentials.",
     imageUrl: "/images/stores/sharma-general.jpg",
     isOpen: true,
+    // DEMO PLACEHOLDER — Must be replaced with verified merchant WhatsApp number for production
     whatsappNumber: "918700914124",
   },
   {
@@ -20,6 +37,7 @@ export const SAMPLE_STORES: Store[] = [
     description: "Fresh everyday essentials and household products.",
     imageUrl: "/images/stores/city-fresh.jpg",
     isOpen: true,
+    // DEMO PLACEHOLDER — Must be replaced with verified merchant WhatsApp number for production
     whatsappNumber: "918700914124",
   },
 ];
