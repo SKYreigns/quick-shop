@@ -42,36 +42,43 @@ Comprehensive product and technical specifications are maintained in the [`Quick
 ### Commands
 
 - **Install dependencies**:
+
   ```bash
   npm install
   ```
 
 - **Start development server**:
+
   ```bash
   npm run dev
   ```
 
 - **Run code linting**:
+
   ```bash
   npm run lint
   ```
 
 - **Run TypeScript validation**:
+
   ```bash
   npm run typecheck
   ```
 
 - **Format code**:
+
   ```bash
   npm run format
   ```
 
 - **Check code formatting**:
+
   ```bash
   npm run format:check
   ```
 
 - **Build production bundle**:
+
   ```bash
   npm run build
   ```
