@@ -1,0 +1,76 @@
+{
+  "stores": [
+    {
+      "id": "store_sharma",
+      "name": "Sharma General Store",
+      "slug": "sharma-general-store",
+      "category": "Groceries & Daily Essentials",
+      "description": "Everyday groceries, snacks, beverages, and household essentials.",
+      "imageUrl": "/images/stores/sharma-general.jpg",
+      "isOpen": true,
+      "whatsappNumber": "919999999999"
+    },
+    {
+      "id": "store_city_fresh",
+      "name": "City Fresh Mart",
+      "slug": "city-fresh-mart",
+      "category": "Groceries & Household",
+      "description": "Fresh everyday essentials and household products.",
+      "imageUrl": "/images/stores/city-fresh.jpg",
+      "isOpen": true,
+      "whatsappNumber": "919888888888"
+    }
+  ],
+  "products": [
+    {
+      "id": "milk_1l",
+      "storeId": "store_sharma",
+      "category": "Groceries",
+      "name": "Amul Taaza Milk",
+      "unit": "1 L",
+      "price": 62,
+      "imageUrl": "/images/products/milk.jpg",
+      "isAvailable": true
+    },
+    {
+      "id": "atta_5kg",
+      "storeId": "store_sharma",
+      "category": "Groceries",
+      "name": "Aashirvaad Atta",
+      "unit": "5 kg",
+      "price": 320,
+      "imageUrl": "/images/products/atta.jpg",
+      "isAvailable": true
+    },
+    {
+      "id": "oil_1l",
+      "storeId": "store_sharma",
+      "category": "Groceries",
+      "name": "Fortune Sunflower Oil",
+      "unit": "1 L",
+      "price": 145,
+      "imageUrl": "/images/products/oil.jpg",
+      "isAvailable": true
+    },
+    {
+      "id": "salt_1kg",
+      "storeId": "store_sharma",
+      "category": "Groceries",
+      "name": "Tata Salt",
+      "unit": "1 kg",
+      "price": 30,
+      "imageUrl": "/images/products/salt.jpg",
+      "isAvailable": true
+    },
+    {
+      "id": "bread_400g",
+      "storeId": "store_sharma",
+      "category": "Snacks",
+      "name": "Britannia Bread",
+      "unit": "400 g",
+      "price": 45,
+      "imageUrl": "/images/products/bread.jpg",
+      "isAvailable": true
+    }
+  ]
+}

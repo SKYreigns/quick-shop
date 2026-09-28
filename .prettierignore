@@ -1,0 +1,9 @@
+node_modules
+.next
+out
+dist
+build
+coverage
+*.log
+package-lock.json
+Quick_Shop_AI_Production_Docs
