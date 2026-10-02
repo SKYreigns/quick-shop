@@ -47,10 +47,12 @@ export default async function StorePage({ params }: StorePageProps) {
   const categories = getStoreCategories(store.id);
 
   return (
-    <StoreCatalogClient
-      store={store}
-      products={products}
-      categories={categories}
-    />
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <StoreCatalogClient
+        store={store}
+        products={products}
+        categories={categories}
+      />
+    </div>
   );
 }
